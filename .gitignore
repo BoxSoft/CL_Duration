@@ -1,0 +1,10 @@
+/map/
+/obj/
+/src/
+*.dll
+*.exe
+*.INI
+/DurationTests.ap~
+/DurationTests.bpp
+*.sln.cache
+*.shp

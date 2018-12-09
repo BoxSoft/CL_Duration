@@ -1,0 +1,50 @@
+  INCLUDE('Equates.clw'),ONCE
+!--------------------------------------
+  OMIT('*** IFDEF ***', TIME:Second)
+TIME:Tick                     EQUATE(  1              )
+TIME:Second                   EQUATE(100 * TIME:Tick  )
+TIME:Minute                   EQUATE( 60 * TIME:Second)
+TIME:Hour                     EQUATE( 60 * TIME:Minute)
+TIME:Day                      EQUATE( 24 * TIME:Hour  )
+  !END-OMIT('*** IFDEF ***', TIME:Second)
+
+  OMIT('*** IFDEF ***', TIME:Midnight)
+TIME:Midnight                 EQUATE(1)  !Defined in Equates.clw
+  !END-OMIT('*** IFDEF ***', TIME:Midnight)
+
+TIME:Noon           EQUATE(TIME:Midnight + 12*TIME:Hour)
+
+!--------------------------------------
+                              ITEMIZE,PRE
+DOW:_Min                        EQUATE(0)
+DOW:Sun                         EQUATE(0)
+DOW:Mon                         EQUATE
+DOW:Tue                         EQUATE
+DOW:Wed                         EQUATE
+DOW:Thu                         EQUATE
+DOW:Fri                         EQUATE
+DOW:Sat                         EQUATE
+DOW:_Max                        EQUATE(6)
+                              END
+
+!--------------------------------------
+DOW:Bit:Mon                   EQUATE(1000000b)
+DOW:Bit:Tue                   EQUATE( 100000b)
+DOW:Bit:Wed                   EQUATE(  10000b)
+DOW:Bit:Thu                   EQUATE(   1000b)
+DOW:Bit:Fri                   EQUATE(    100b)
+DOW:Bit:Sat                   EQUATE(     10b)
+DOW:Bit:Sun                   EQUATE(      1b)
+
+!--------------------------------------
+MIN_DATE                      EQUATE(4)
+MAX_DATE                      EQUATE(2994626)
+MIN_TIME                      EQUATE(TIME:Midnight)
+MAX_TIME                      EQUATE(TIME:Day)
+
+DATE:Min                      EQUATE(MIN_DATE)
+DATE:Max                      EQUATE(MAX_DATE)
+TIME:Min                      EQUATE(MIN_TIME)
+TIME:Max                      EQUATE(MAX_TIME)
+
+!--------------------------------------

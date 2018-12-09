@@ -1,0 +1,74 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{AF0484FC-5528-4051-907E-2D5AAD21A795}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Win32</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>DurationTests</RootNamespace>
+    <AssemblyName>DurationTests</AssemblyName>
+    <OutputName>DurationTests</OutputName>
+    <CWOutputType>Exe</CWOutputType>
+    <DefineConstants>_ABCDllMode_=&gt;0%3b_ABCLinkMode_=&gt;1</DefineConstants>
+    <Model>Dll</Model>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <vid>full</vid>
+    <check_stack>True</check_stack>
+    <check_index>True</check_index>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <vid>off</vid>
+    <check_stack>False</check_stack>
+    <check_index>False</check_index>
+  </PropertyGroup>
+  <ItemGroup>
+    <FileDriver Include="ASCII" />
+    <Compile Include="DurationTests.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="DurationTests001.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="DurationTests002.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="DurationTests003.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="DurationTests004.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="DurationTests005.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="DurationTests006.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="DurationTests007.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="DurationTests008.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="DurationTests009.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="DurationTests010.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="DurationTests011.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="DURATIONTESTS_BC.CLW">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="DurationTests_BC0.CLW">
+      <Generated>true</Generated>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(ClarionBinPath)\SoftVelocity.Build.Clarion.targets" />
+</Project>
