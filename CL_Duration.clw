@@ -9,48 +9,32 @@
 !==============================================================================
 CL_Duration.Construct         PROCEDURE
   CODE
-  SELF.TimeFormat = CL_Duration:TimeFormat:hh:mm:ss
-
-  SELF.Abbr_Years   = 'y'
-  SELF.Abbr_Months  = 'm'
-  SELF.Abbr_Weeks   = 'w'
-  SELF.Abbr_Days    = 'd'
-  SELF.Abbr_Hours   = 'h'
-  SELF.Abbr_Minutes = 'm'
-  SELF.Abbr_Seconds = 's'
+  SELF.SetFormat(CL_Duration:Format:hh:mm:ss)
 
 !==============================================================================
-CL_Duration.Destruct            PROCEDURE
+CL_Duration.Destruct          PROCEDURE
   CODE
 
 !==============================================================================
-CL_Duration.Format_           PROCEDURE(LONG Value,STRING Picture)!,STRING
+CL_Duration.SetFormat         PROCEDURE(BYTE DurationFormat)
   CODE
-  RETURN CLIP(LEFT(FORMAT(Value, Picture)))
-      
+  SELF._Format = DurationFormat
+  
 !==============================================================================
-CL_Duration.FormatTime        PROCEDURE!,STRING
+CL_Duration.FormatDuration    PROCEDURE!,STRING
 H                               LONG
 M                               LONG
 S                               LONG
   CODE
-  CASE SELF.TimeFormat
-    ;OF CL_Duration:TimeFormat:hh:mm:ss;  DO _hh:mm:ss
-    ;OF CL_Duration:TimeFormat:hh:mm;     DO _hh:mm
-    ;OF CL_Duration:TimeFormat:mm:ss;     DO _mm:ss
-    ;OF CL_Duration:TimeFormat:h_m_s;     DO _h_m_s
-    ;OF CL_Duration:TimeFormat:hms  ;     DO _hms
+  CASE SELF._Format
+    ;OF CL_Duration:Format:hh:mm:ss;  DO _hh:mm:ss
+    ;OF CL_Duration:Format:h_m_s;     DO _h_m_s
+    ;OF CL_Duration:Format:hms  ;     DO _hms
   END
   RETURN ''
 
 _hh:mm:ss                     ROUTINE
-  RETURN SELF.Format_(SELF.GetTime()+1, '@T4')
-
-_hh:mm                        ROUTINE
-  RETURN SELF.Format_(SELF.GetTime()+1, '@T4')  !TODO
-
-_mm:ss                        ROUTINE
-  RETURN SELF.Format_(SELF.GetTime()+1, '@T4')  !TODO
+  RETURN SELF.TrimFormat(SELF.GetTime()+1, '@T4')
 
 _h_m_s                        ROUTINE
   DO SetHMS
@@ -116,8 +100,8 @@ CL_Duration.SetTime           PROCEDURE(LONG T)
   SELF.SetEither(, T)
 
 !==============================================================================
-CL_Duration.SetTimeFormat     PROCEDURE(BYTE TimeFormat)
+CL_Duration.TrimFormat        PROCEDURE(LONG Value,STRING Picture)!,STRING
   CODE
-  SELF.TimeFormat = TimeFormat
-  
+  RETURN CLIP(LEFT(FORMAT(Value, Picture)))
+      
 !==============================================================================
