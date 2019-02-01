@@ -1,0 +1,21 @@
+Output tests
+  15 mins
+  15m3s
+  15
+  90
+  9:30
+  9.5
+  9m30s
+  2d3h4m
+    
+  20
+  1:30
+  01:30
+
+Input Tests   
+   5
+   5:30
+   5m4s
+   3h5m4s
+   3h4s
+   

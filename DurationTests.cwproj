@@ -10,6 +10,7 @@
     <CWOutputType>Exe</CWOutputType>
     <DefineConstants>_ABCDllMode_=&gt;0%3b_ABCLinkMode_=&gt;1</DefineConstants>
     <Model>Dll</Model>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>True</DebugSymbols>
@@ -63,6 +64,12 @@
     <Compile Include="DurationTests011.clw">
       <Generated>true</Generated>
     </Compile>
+    <Compile Include="DurationTests012.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="DurationTests013.clw">
+      <Generated>true</Generated>
+    </Compile>
     <Compile Include="DURATIONTESTS_BC.CLW">
       <Generated>true</Generated>
     </Compile>
@@ -71,4 +78,7 @@
     </Compile>
   </ItemGroup>
   <Import Project="$(ClarionBinPath)\SoftVelocity.Build.Clarion.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>ClarionTest.exe DurationTests.dll /run</PostBuildEvent>
+  </PropertyGroup>
 </Project>
